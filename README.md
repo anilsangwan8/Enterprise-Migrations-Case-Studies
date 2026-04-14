@@ -2,8 +2,8 @@
 
 ### Salesforce to Microsoft Power Platform Migration
 
-#### Role: Senior Business Analyst & Project Lead              
-#### Domain: Life Sciences / Pharmaceuticals 
+#### **Role**: Senior Business Analyst & Project Lead              
+#### **Domain**: Life Sciences / Pharmaceuticals 
 
 ## Executive Summary 
 
