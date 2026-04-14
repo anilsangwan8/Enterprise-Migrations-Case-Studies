@@ -53,6 +53,22 @@ To bridge significant platform gaps, I oversaw the engineering of high-impact cu
 ## Key Lessons & Playbook for Future Migrations 
 - **Discovery ≠ Demo**: My biggest lesson was prioritizing business outcomes ("What is the intent?") over historical behavior ("How did the old button work?"). 
 - **Load Test Early**: Production-level data volumes (500k+ records) must be tested within the first month to identify delegation bottlenecks. 
-- **Governance First**: Establish a Change Control Board (CCB) early to sign off on behavioral shifts between Salesforce and Power Platform. 
+- **Governance First**: Establish a Change Control Board (CCB) early to sign off on behavioral shifts between Salesforce and Power Platform.
 
-**Technical Stack: Power Apps (Canvas/Model-Driven), Dataverse, Power Automate, Dataflows, JavaScript, SQL, Salesforce (Apex/SOQL).**
+## Project Implementation Best Practices
+
+| Area | DO | DON’T |
+| :--- | :--- | :--- |
+| **Discovery** | **DO** conduct "Logic Audits" to simplify and retire legacy "Spaghetti logic" before building. | **DON’T** assume Reverse Engineering an old app is faster than a fresh business requirement workshop. |
+| **Architecture** | **DO** use Model-Driven Apps for data-heavy, complex relational entities to ensure performance. Make App on Start light weight. | **DON’T** use Canvas Apps as a default for everything just to "control the UI." |
+| **User Interface** | **DO** adopt the "Power Apps Native" look and feel to leverage built-in responsiveness. | **DON’T** promise an "Exact SFDC Replica." It leads to endless cosmetic reopens. |
+| **Performance** | **DO** load test with Production-level data volumes (e.g., 500k+ records) during the first month. | **DON’T** wait for UAT to realize that a data upload or gallery filter is timing out. |
+| **Data Handling** | **DO** use Azure Integrations or Dataflows for larger real-time data processing. | **DON’T** rely on Standard Power Automate or App-side logic for large data volume (> 1Lac) transactions. |
+| **Governance** | **DO** establish a Change Control Board with Client IT Heads to sign off on behavioral shifts. | **DON’T** let the Business see the first demo without having already signed off on the functional / behavioral differences. |
+| **Testing** | **DO** use the Power Apps Test Studio to automate regression and alignment checks. | **DON’T** treat UAT as a discovery phase; it should be a final validation of a frozen scope. |
+| **Vendor Management** | **DO** build an Internal Workaround Library for known platform limitations. | **DON’T** wait for Microsoft Support to solve "Blocker" issues; their SLA might not match your project velocity. |
+| **App Start** | **DO** use `App.Formulas` and `Concurrent()` to load data in the background. | **DON’T** put heavy `ClearCollect()` in `OnStart` that forces a user to wait 20 seconds. |
+| **Data Logic** | **DO** push complex validation to Dataverse Plugins or Calculated Columns (Server-side). | **DON’T** rely on Power Fx formulas on a "Submit" button to handle critical business rules. |
+| **Error Handling** | **DO** build a custom Error Log Table to capture when flows or app formulas fail. | **DON’T** assume the "App Checker" or MS Support will catch every performance bottleneck. |
+
+**Technical Stack: Power Apps (Canvas/Model-Driven), Dataverse, Power Automate, PowerBI, Dataflows, JavaScript, SQL, Salesforce (Apex/SOQL).**
