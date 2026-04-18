@@ -5,6 +5,8 @@
 #### **Role**: Senior Business Analyst & Project Lead              
 #### **Domain**: Life Sciences / Pharmaceuticals 
 
+Link : [The_Migration_Blueprint.pdf](https://github.com/user-attachments/files/26858389/The_Migration_Blueprint.pdf)
+
 ## Executive Summary 
 
 When a global pharmaceutical leader engaged our team to migrate 20+ business-critical applications off Salesforce onto Microsoft Power Platform, it seemed straightforward: replicate everything, preserve every screen, and do it in nine months.
